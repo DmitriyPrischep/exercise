@@ -8,7 +8,7 @@ from threadPool import ThreadPool
 from configParser import get_config_params
 import handler
 
-CONFIG = os.environ['CONFIG']  # '/etc/httpd.conf'
+CONFIG = os.environ['CONFIG']  # '/etc/httpd.conf '
 cfg = get_config_params(CONFIG)
 if not cfg:
 	exit('correct config expected')
