@@ -12,7 +12,7 @@ class FileManager():
   # Проверяет есть ли файл в кэше, если есть, то взять от туда, если нет, то закэшировать
   def takeFile(self, url):
     path = self._urlToPath(url)
-    print("path: ", path)
+  #  print("path: ", path)
     casheValue = self._isInCashe(path)
     if not casheValue:
       self._addInCache(path)

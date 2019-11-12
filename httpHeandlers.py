@@ -21,7 +21,7 @@ class HttpRequest:
     init_line, _, other = input.partition('\r\n') 
     self.method, query_string, self.protocol = init_line.split(' ') 
     query_args = query_string.split('?')
-    print("query_args ", query_args)
+  #  print("query_args ", query_args)
     
     self.path = query_args[0]
     if len(query_args) == 1:
@@ -50,9 +50,9 @@ class HttpRequest:
       
     if re.search(r'/\.\.', self.path):
       self.error = 'Root directory escape'
-    print("Path is: ", self.path)
+  #  print("Path is: ", self.path)
     self.file_type = self.path.split('.')[-1]
-    print("self.file_type  is: ", self.file_type )
+  #  print("self.file_type  is: ", self.file_type )
     if self.method not in ['GET', 'HEAD', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE', 'TRACE', 'CONNECT']:
       self.error = 'Unknown method'
     # pattern = re.compile(r'(GET|HEAD|POST|OPTIONS|PUT|PATCH|DELETE|TRACE|CONNECT) /([A-Za-z0-9%][A-Za-z0-9%.\-_/ ]*)(\??.*) HTTP')
@@ -61,7 +61,7 @@ class HttpRequest:
     # if params:
     #   self.method, self.path, self.query_params = params[1], params[2], params[3]
     #   self.path = parse.unquote(self.path)
-    #   print("Path is: ", self.path)
+    # #  print("Path is: ", self.path)
     #   if self.path in ['', '/', ' ']:
     #     self.path = 'index.html'
     # print("Now path is: ", self.path)
@@ -128,5 +128,5 @@ class HTTPResponse():
         self.response += '\r\n' + self.body 
     else: 
       self.response += '\r\n'
-    print("response: ",self.response.encode()[:256],)
+  #  print("response: ",self.response.encode()[:256],)
     return self.response.encode()
