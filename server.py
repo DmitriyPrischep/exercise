@@ -22,7 +22,7 @@ def createSocket(ip, port, max_connections):
 
 
 def cpusFork():
-    server = createSocket('', 80, 10)
+    server = createSocket('', 80, 64)
     fileManager = fileController.FileManager()
     procs = list()
     for cpu in range(4):
