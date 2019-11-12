@@ -1,2 +1,1 @@
-# exercise
-First seminar in tehnopark
+# Web server (Python Threadpool)
