@@ -28,6 +28,7 @@ def handler(conn, rootDir, ip, fileManager):
 			resp.set_status(405, 'Method Not Allowed')
 		else:
 			resp.add_header('Server', 'HowleServ')
+			resp.add_header('Connection', 'Keep-Alive')
 			fullPath = os.path.join(rootDir, req.path)
 			# print("fullPath", fullPath, "rootDir: ", rootDir)
 			if not os.path.exists(fullPath):
