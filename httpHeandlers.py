@@ -18,8 +18,13 @@ class HttpRequest:
     self.file_type = ''
 
   def process(self, input):
+    query_string = ''
     init_line, _, other = input.partition('\r\n') 
-    self.method, query_string, self.protocol = init_line.split(' ') 
+    tmp_query_string = init_line.split(' ')
+    if len(tmp_query_string) == 3:
+      self.method = tmp_query_string[0]
+      self.protocol = tmp_query_string[2]
+      query_string = tmp_query_string[1]
     query_args = query_string.split('?')
   #  print("query_args ", query_args)
     
@@ -42,8 +47,9 @@ class HttpRequest:
     #                         ) 
     #  
     self.path = urllib.parse.unquote(self.path)
-    if self.path[0] == '/':
-      self.path = self.path[1:]
+    if self.path:
+      if self.path[0] == '/':
+        self.path = self.path[1:]
   
     if self.path in ['', '/', ' ']:
       self.path = 'index.html'
